@@ -65,7 +65,7 @@ const Categories = () => {
          <div className='grid  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 bg-white'>
               {
                 categories.map((item) => (
-                    <CategoriesCard item={item}/> 
+                    <CategoriesCard key={item.title} item={item}/> 
                 ))
               }
          </div>

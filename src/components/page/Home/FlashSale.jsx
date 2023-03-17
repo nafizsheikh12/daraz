@@ -80,7 +80,7 @@ const FlashSale = () => {
                
                  {
                     product.map((item) => (
-                       <FlashSaleCard item={item}/>
+                       <FlashSaleCard key={item.title} item={item}/>
                     ))
                  }
             </div>

@@ -55,7 +55,7 @@ const JustForYou = () => {
             <div className='grid  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 pt-2  pb-4 gap-3'>
                  {
                     jusforyou.map((item) => (
-                         <JustForYouCard item={item}/>
+                         <JustForYouCard key={item.title} item={item}/>
                     ))
                  }
             </div>
