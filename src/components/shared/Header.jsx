@@ -1,15 +1,17 @@
-import React,{useRef} from 'react'
+import React,{useRef,useState} from 'react'
 import logo from "../../assets/logo/logo.png";
 import Image from 'next/image';
 import {BsCart3} from"react-icons/bs"
 import {HiOutlineUser} from "react-icons/hi"
+import {BiCategory} from "react-icons/bi"
 
 const Header = () => {
-  const navRef =useRef();
+  const [toggle, settoggle] = useState(false)
 
-  const toggleRef = () => {
-    navRef.current.classList.toggle("hidden")
+  const categoryOpen = () => {
+    settoggle(!toggle)
   }
+  
   return (
     <>
     <header className='fixed z-20 w-full bg-white top-0'>
@@ -31,12 +33,15 @@ const Header = () => {
                     </div>
                 </form>
           </div>
-          <div className='flex '>
+          <div className='flex items-center'>
+                <div className='w-[40px] ml-auto md:hidden'>
+                    <BiCategory className='text-[24px] cursor-pointer' onClick={categoryOpen} />
+                </div>
                 <div className='w-[40px] ml-auto' >
                     <BsCart3 className='text-[27px]'/>
                 </div>
                 <div className='w-[40px] ml-auto'>
-                    <HiOutlineUser className='text-[27px] cursor-pointer' onClick={toggleRef}/>
+                    <HiOutlineUser className='text-[27px] cursor-pointer' />
                 </div>
           </div>
       </div>
@@ -53,6 +58,28 @@ const Header = () => {
                         </div>
                     </div>
                 </form>
+      </div>
+      <div>
+     {
+       toggle && (
+           <div id="dropdownNavbar"  className=" md:hidden  z-10 w-full font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                       <li>
+                         <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                       </li>
+                       <li>
+                         <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                       </li>
+                       <li>
+                         <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                       </li>
+                     </ul>
+                     <div className="py-1">
+                       <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Sign out</a>
+                     </div>
+            </div>
+          )
+     }
       </div>
     </header> 
     </>
